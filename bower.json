@@ -1,0 +1,28 @@
+{
+  "name": "jquery.sticky",
+  "version": "0.0.1",
+  "authors": [
+    "Facundo Cabrera <cabrerafacundo@gmail.com>",
+    "Marcos Gallardo <socramg@gmail.com>"
+  ],
+  "description": "Simulation of top/left side fixed column using position:sticky and CSS transform as fallback",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "jquery": "~2.0.3",
+    "requestAnimationFrame": "https://github.com/darius/requestAnimationFrame.git#8390649713d9fb3f6eaa8721384ce60788f7b9c3"
+  },
+  "main": "jquery.sticky.js",
+  "homepage": "https://github.com/marcosgallardo/jquery.sticky",
+  "keywords": [
+    "jquery",
+    "position",
+    "sticky",
+    "requestAnimationFrame"
+  ]
+}

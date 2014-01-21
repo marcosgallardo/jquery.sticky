@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CSS position: sticky</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="bower_components/modernizr/modernizr.js"></script>
+  <script src="bower_components/modernizr/feature-detects/css-positionsticky.js"></script>
+  <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/requestAnimationFrame/requestAnimationFrame.js"></script>
+  <script src="jquery.sticky.js"></script>
+
+  <script>
+    $(function() {
+      $('.sticky').sticky();
+
+      // Test reinitialization after 1sec (everything must continue working
+      // without anything special).
+      setTimeout(function(){
+        $('.sticky').sticky('destroy').sticky();
+      }, 1000);
+    });
+  </script>
+
+  <style>
+
+    .container {
+      float: left;
+      width: 49%;
+      border: 1px #000 solid;
+      margin: 1% 1% 0 0;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      height: 200px;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .title {
+      top: 0;
+      left: 0;
+      height: 50px;
+      width: 100%;
+      background-color: #EEE;
+    }
+
+    .sticky {
+      position: -webkit-sticky;
+      position: sticky;
+    }
+
+    .content {
+      font-size: 13px;
+      padding: 5px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+    }
+
+    .container-left .title {
+      width: 100px;
+      height: 100%;
+    }
+
+    .container-left .content {
+      margin: -200px 0 0 100px;
+      width: 1000px;
+    }
+
+    .container-top.h-scroll .content {
+      width: 1000px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="container container-top">
+    <div class="title sticky" data-target=".container-top">Title 1</div>
+    <div class="content">
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus adipiscing eu odio nec dapibus. Etiam eu dapibus tortor. Integer a nulla risus. Phasellus quis tempus nibh. In malesuada eros ut commodo tristique. Aenean laoreet et sem eget tempor. Sed quis suscipit tellus. Cras facilisis risus eros, quis pulvinar tellus dapibus at. Cras eu tortor tortor. Duis non volutpat magna. Donec ultrices vulputate lorem nec mattis.
+      </p>
+      <p>
+      Cras magna turpis, sagittis sit amet faucibus nec, cursus id nisl. Mauris mi diam, varius ac ligula quis, rutrum mollis magna. Vivamus sed consectetur diam. Etiam ut lectus tempor sapien consectetur blandit. Curabitur gravida, ligula condimentum fringilla interdum, dui eros condimentum ante, vitae pulvinar diam lorem ullamcorper diam. Duis vel ante vestibulum, faucibus nibh sed, auctor arcu. Aliquam scelerisque ante ac sem tincidunt bibendum. Aenean fringilla eros sed tellus egestas blandit. In nec luctus nulla. Donec tempor diam neque, ut dictum risus pharetra et.
+      </p>
+      <p>
+      Proin varius non purus ac facilisis. Nam scelerisque justo purus, vitae malesuada metus tincidunt non. Morbi tincidunt ultrices nisi. Ut vel porttitor metus, eget semper enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras in aliquet urna. Etiam congue eros sit amet feugiat suscipit. Donec sed leo et augue hendrerit euismod ac ut nulla. Ut quis consectetur lorem, congue fermentum ipsum.
+      </p>
+      <p>
+      Vivamus leo urna, dapibus vel ipsum vel, commodo pharetra quam. Mauris porta nunc sed augue accumsan, non elementum felis porttitor. Sed volutpat augue sit amet purus sagittis tincidunt. Vestibulum tristique facilisis rutrum. Integer accumsan leo vestibulum dui bibendum auctor. Curabitur tempor at nisl eu tincidunt. Nullam eget urna magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed viverra nulla eget erat suscipit porta. Proin dapibus non orci sed consectetur. Nam eu magna ac dui laoreet vehicula. Etiam pellentesque enim eget nibh ultrices malesuada. Maecenas mattis condimentum est, a faucibus erat tincidunt a. Maecenas venenatis turpis et eros auctor malesuada. In tincidunt odio ut porttitor sagittis.
+      </p>
+    </div>
+  </div>
+
+  <div class="container container-left">
+    <div class="title sticky" data-target=".container-left">Title 3</div>
+    <div class="content">
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus adipiscing eu odio nec dapibus. Etiam eu dapibus tortor. Integer a nulla risus. Phasellus quis tempus nibh. In malesuada eros ut commodo tristique. Aenean laoreet et sem eget tempor. Sed quis suscipit tellus. Cras facilisis risus eros, quis pulvinar tellus dapibus at. Cras eu tortor tortor. Duis non volutpat magna. Donec ultrices vulputate lorem nec mattis.
+      Cras magna turpis, sagittis sit amet faucibus nec, cursus id nisl. Mauris mi diam, varius ac ligula quis, rutrum mollis magna. Vivamus sed consectetur diam. Etiam ut lectus tempor sapien consectetur blandit. Curabitur gravida, ligula condimentum fringilla interdum, dui eros condimentum ante, vitae pulvinar diam lorem ullamcorper diam. Duis vel ante vestibulum, faucibus nibh sed, auctor arcu. Aliquam scelerisque ante ac sem tincidunt bibendum. Aenean fringilla eros sed tellus egestas blandit. In nec luctus nulla. Donec tempor diam neque, ut dictum risus pharetra et.
+      Proin varius non purus ac facilisis. Nam scelerisque justo purus, vitae malesuada metus tincidunt non. Morbi tincidunt ultrices nisi. Ut vel porttitor metus, eget semper enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras in aliquet urna. Etiam congue eros sit amet feugiat suscipit. Donec sed leo et augue hendrerit euismod ac ut nulla. Ut quis consectetur lorem, congue fermentum ipsum.
+      Vivamus leo urna, dapibus vel ipsum vel, commodo pharetra quam. Mauris porta nunc sed augue accumsan, non elementum felis porttitor. Sed volutpat augue sit amet purus sagittis tincidunt. Vestibulum tristique facilisis rutrum.
+      </p>
+    </div>
+  </div>
+
+  <div class="container container-top h-scroll">
+    <div class="title sticky" data-target=".container-top">Title 3</div>
+    <div class="content">
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus adipiscing eu odio nec dapibus. Etiam eu dapibus tortor. Integer a nulla risus. Phasellus quis tempus nibh. In malesuada eros ut commodo tristique. Aenean laoreet et sem eget tempor. Sed quis suscipit tellus. Cras facilisis risus eros, quis pulvinar tellus dapibus at. Cras eu tortor tortor. Duis non volutpat magna. Donec ultrices vulputate lorem nec mattis.
+      Cras magna turpis, sagittis sit amet faucibus nec, cursus id nisl. Mauris mi diam, varius ac ligula quis, rutrum mollis magna. Vivamus sed consectetur diam. Etiam ut lectus tempor sapien consectetur blandit. Curabitur gravida, ligula condimentum fringilla interdum, dui eros condimentum ante, vitae pulvinar diam lorem ullamcorper diam. Duis vel ante vestibulum, faucibus nibh sed, auctor arcu. Aliquam scelerisque ante ac sem tincidunt bibendum. Aenean fringilla eros sed tellus egestas blandit. In nec luctus nulla. Donec tempor diam neque, ut dictum risus pharetra et.
+      Proin varius non purus ac facilisis. Nam scelerisque justo purus, vitae malesuada metus tincidunt non. Morbi tincidunt ultrices nisi. Ut vel porttitor metus, eget semper enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras in aliquet urna. Etiam congue eros sit amet feugiat suscipit. Donec sed leo et augue hendrerit euismod ac ut nulla. Ut quis consectetur lorem, congue fermentum ipsum.
+      Vivamus leo urna, dapibus vel ipsum vel, commodo pharetra quam. Mauris porta nunc sed augue accumsan, non elementum felis porttitor. Sed volutpat augue sit amet purus sagittis tincidunt. Vestibulum tristique facilisis rutrum.
+      </p>
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus adipiscing eu odio nec dapibus. Etiam eu dapibus tortor. Integer a nulla risus. Phasellus quis tempus nibh. In malesuada eros ut commodo tristique. Aenean laoreet et sem eget tempor. Sed quis suscipit tellus. Cras facilisis risus eros, quis pulvinar tellus dapibus at. Cras eu tortor tortor. Duis non volutpat magna. Donec ultrices vulputate lorem nec mattis.
+      Cras magna turpis, sagittis sit amet faucibus nec, cursus id nisl. Mauris mi diam, varius ac ligula quis, rutrum mollis magna. Vivamus sed consectetur diam. Etiam ut lectus tempor sapien consectetur blandit. Curabitur gravida, ligula condimentum fringilla interdum, dui eros condimentum ante, vitae pulvinar diam lorem ullamcorper diam. Duis vel ante vestibulum, faucibus nibh sed, auctor arcu. Aliquam scelerisque ante ac sem tincidunt bibendum. Aenean fringilla eros sed tellus egestas blandit. In nec luctus nulla. Donec tempor diam neque, ut dictum risus pharetra et.
+      Proin varius non purus ac facilisis. Nam scelerisque justo purus, vitae malesuada metus tincidunt non. Morbi tincidunt ultrices nisi. Ut vel porttitor metus, eget semper enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras in aliquet urna. Etiam congue eros sit amet feugiat suscipit. Donec sed leo et augue hendrerit euismod ac ut nulla. Ut quis consectetur lorem, congue fermentum ipsum.
+      Vivamus leo urna, dapibus vel ipsum vel, commodo pharetra quam. Mauris porta nunc sed augue accumsan, non elementum felis porttitor. Sed volutpat augue sit amet purus sagittis tincidunt. Vestibulum tristique facilisis rutrum.
+      </p>
+    </div>
+  </div>
+
+  <div class="container container-left">
+    <div class="title sticky" data-target=".container-left">Title 4</div>
+    <div class="content">
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus adipiscing eu odio nec dapibus. Etiam eu dapibus tortor. Integer a nulla risus. Phasellus quis tempus nibh. In malesuada eros ut commodo tristique. Aenean laoreet et sem eget tempor. Sed quis suscipit tellus. Cras facilisis risus eros, quis pulvinar tellus dapibus at. Cras eu tortor tortor. Duis non volutpat magna. Donec ultrices vulputate lorem nec mattis.
+      Cras magna turpis, sagittis sit amet faucibus nec, cursus id nisl. Mauris mi diam, varius ac ligula quis, rutrum mollis magna. Vivamus sed consectetur diam. Etiam ut lectus tempor sapien consectetur blandit. Curabitur gravida, ligula condimentum fringilla interdum, dui eros condimentum ante, vitae pulvinar diam lorem ullamcorper diam. Duis vel ante vestibulum, faucibus nibh sed, auctor arcu. Aliquam scelerisque ante ac sem tincidunt bibendum. Aenean fringilla eros sed tellus egestas blandit. In nec luctus nulla. Donec tempor diam neque, ut dictum risus pharetra et.
+      Proin varius non purus ac facilisis. Nam scelerisque justo purus, vitae malesuada metus tincidunt non. Morbi tincidunt ultrices nisi. Ut vel porttitor metus, eget semper enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras in aliquet urna. Etiam congue eros sit amet feugiat suscipit. Donec sed leo et augue hendrerit euismod ac ut nulla. Ut quis consectetur lorem, congue fermentum ipsum.
+      Vivamus leo urna, dapibus vel ipsum vel, commodo pharetra quam. Mauris porta nunc sed augue accumsan, non elementum felis porttitor. Sed volutpat augue sit amet purus sagittis tincidunt. Vestibulum tristique facilisis rutrum.
+      </p>
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus adipiscing eu odio nec dapibus. Etiam eu dapibus tortor. Integer a nulla risus. Phasellus quis tempus nibh. In malesuada eros ut commodo tristique. Aenean laoreet et sem eget tempor. Sed quis suscipit tellus. Cras facilisis risus eros, quis pulvinar tellus dapibus at. Cras eu tortor tortor. Duis non volutpat magna. Donec ultrices vulputate lorem nec mattis.
+      Cras magna turpis, sagittis sit amet faucibus nec, cursus id nisl. Mauris mi diam, varius ac ligula quis, rutrum mollis magna. Vivamus sed consectetur diam. Etiam ut lectus tempor sapien consectetur blandit. Curabitur gravida, ligula condimentum fringilla interdum, dui eros condimentum ante, vitae pulvinar diam lorem ullamcorper diam. Duis vel ante vestibulum, faucibus nibh sed, auctor arcu. Aliquam scelerisque ante ac sem tincidunt bibendum. Aenean fringilla eros sed tellus egestas blandit. In nec luctus nulla. Donec tempor diam neque, ut dictum risus pharetra et.
+      Proin varius non purus ac facilisis. Nam scelerisque justo purus, vitae malesuada metus tincidunt non. Morbi tincidunt ultrices nisi. Ut vel porttitor metus, eget semper enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras in aliquet urna. Etiam congue eros sit amet feugiat suscipit. Donec sed leo et augue hendrerit euismod ac ut nulla. Ut quis consectetur lorem, congue fermentum ipsum.
+      Vivamus leo urna, dapibus vel ipsum vel, commodo pharetra quam. Mauris porta nunc sed augue accumsan, non elementum felis porttitor. Sed volutpat augue sit amet purus sagittis tincidunt. Vestibulum tristique facilisis rutrum.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
