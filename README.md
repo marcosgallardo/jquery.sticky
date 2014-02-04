@@ -3,11 +3,11 @@
 ## Markup proposed
 
 ```html
-<div class="scrollable">
+<div class="container">
   <!--
   data-target it could be any ancestor, it's no need to be the direct one
   -->
-  <div class="sticky" data-target=".scrollable">
+  <div class="sticky" data-target=".container">
     <!-- Fixed content will be here -->
   </div>
   <div class="content">
@@ -19,7 +19,7 @@
 ## JS Snippet
 
 ```js
-$('.sticky').fixedcolumn(); // this will handle all the JS show for you
+$('.sticky').sticky(); // this will handle all the JS show for you
 ```
 
 ## Browser support

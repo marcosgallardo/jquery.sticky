@@ -39,16 +39,28 @@
     }
 
     .title {
-      top: 0;
-      left: 0;
       height: 50px;
       width: 100%;
       background-color: #EEE;
     }
 
+    .title h3 {
+      margin: 0;
+      padding: 5px;
+      text-align: center;
+    }
+
     .sticky {
       position: -webkit-sticky;
       position: sticky;
+    }
+
+    .top {
+      top: 0;
+    }
+
+    .left {
+      left: 0;
     }
 
     .content {
@@ -79,7 +91,9 @@
 <body>
 
   <div class="container container-top">
-    <div class="title sticky" data-target=".container-top">Title 1</div>
+    <div class="title sticky top" data-target=".container-top">
+      <h3>Fixed to container top</h3>
+    </div>
     <div class="content">
       <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus adipiscing eu odio nec dapibus. Etiam eu dapibus tortor. Integer a nulla risus. Phasellus quis tempus nibh. In malesuada eros ut commodo tristique. Aenean laoreet et sem eget tempor. Sed quis suscipit tellus. Cras facilisis risus eros, quis pulvinar tellus dapibus at. Cras eu tortor tortor. Duis non volutpat magna. Donec ultrices vulputate lorem nec mattis.
@@ -97,7 +111,9 @@
   </div>
 
   <div class="container container-left">
-    <div class="title sticky" data-target=".container-left">Title 3</div>
+    <div class="title sticky left" data-target=".container-left">
+      <h3>Fixed to container left</h3>
+    </div>
     <div class="content">
       <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus adipiscing eu odio nec dapibus. Etiam eu dapibus tortor. Integer a nulla risus. Phasellus quis tempus nibh. In malesuada eros ut commodo tristique. Aenean laoreet et sem eget tempor. Sed quis suscipit tellus. Cras facilisis risus eros, quis pulvinar tellus dapibus at. Cras eu tortor tortor. Duis non volutpat magna. Donec ultrices vulputate lorem nec mattis.
@@ -109,7 +125,9 @@
   </div>
 
   <div class="container container-top h-scroll">
-    <div class="title sticky" data-target=".container-top">Title 3</div>
+    <div class="title sticky top left" data-target=".container-top">
+      <h3>Fixed to container top &amp; left</h3>
+    </div>
     <div class="content">
       <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus adipiscing eu odio nec dapibus. Etiam eu dapibus tortor. Integer a nulla risus. Phasellus quis tempus nibh. In malesuada eros ut commodo tristique. Aenean laoreet et sem eget tempor. Sed quis suscipit tellus. Cras facilisis risus eros, quis pulvinar tellus dapibus at. Cras eu tortor tortor. Duis non volutpat magna. Donec ultrices vulputate lorem nec mattis.
@@ -127,7 +145,9 @@
   </div>
 
   <div class="container container-left">
-    <div class="title sticky" data-target=".container-left">Title 4</div>
+    <div class="title sticky" data-target=".container-left">
+      <h3>Fixed to container left &amp; top</h3>
+    </div>
     <div class="content">
       <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus adipiscing eu odio nec dapibus. Etiam eu dapibus tortor. Integer a nulla risus. Phasellus quis tempus nibh. In malesuada eros ut commodo tristique. Aenean laoreet et sem eget tempor. Sed quis suscipit tellus. Cras facilisis risus eros, quis pulvinar tellus dapibus at. Cras eu tortor tortor. Duis non volutpat magna. Donec ultrices vulputate lorem nec mattis.
@@ -143,6 +163,6 @@
       </p>
     </div>
   </div>
-
+  
 </body>
 </html>

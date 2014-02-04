@@ -1,10 +1,30 @@
+/**
+  Simulation of top/left side fixed column using position:sticky and CSS transform as fallback
+
+  @author "Marcos Gallardo" <socramg@gmail.com>
+  @author "Facundo Cabrera" <cabrerafacundo@gmail.com>
+**/
+
 (function($) {
   'use strict';
 
+
+  /* STICKY CLASS DEFINITION
+   * ========================= */
+
+  /**
+  @class Sticky
+  @constructor
+  **/
   var Sticky = function(element) {
-    this.init(element);
+    this._init(element);
   };
 
+  /**
+   * Validates if sticky polyfill is required
+   *
+   * @property Sticky.useSticky
+   **/
   Sticky.useSticky = (function() {
     var ua = navigator.userAgent.match(/version\/((\d+)?[\w\.]+).+?mobile\/\w+\s(safari)/i),
       stickyTest = $('html').hasClass('csspositionsticky');
@@ -16,9 +36,20 @@
   }());
 
   Sticky.prototype = {
+    /**
+     * Reference to contructor.
+     *
+     * @property {Object}
+     **/
     constructor: Sticky,
 
-    init: function($el) {
+    /**
+     * Initialize componente
+     *
+     * @method init
+     * @private
+     **/
+    _init: function($el) {
       if (!Sticky.useSticky) {
         this.$el = $el;
 
@@ -30,12 +61,20 @@
         // cache scrollable
         this.$scrollable = this.$el.closest(this.$el.data('target'));
 
-        this.translate();
-        this.listenScroll();
+        this._translate();
+        this._listenScroll();
       }
     },
 
-    translate: function(x, y) {
+    /**
+     * Updates element position
+     *
+     * @param x {Integer} left position
+     * @param y {Integer} top position
+     * @method _translate
+     * @private
+     **/
+    _translate: function(x, y) {
       this.$el.css({
         transform: 'translate(' + (this.initialLeft + (x || 0)) + 'px, ' + (this.initialTop + (y || 0)) + 'px)'
       });
@@ -43,7 +82,13 @@
       return this;
     },
 
-    listenScroll: function() {
+    /**
+     * Ckecks current scroll position to update element position
+     *
+     * @method _listenScroll
+     * @private
+     **/
+    _listenScroll: function() {
       var self = this,
         currentTop = 0,
         previousTop = 0,
@@ -55,7 +100,7 @@
           currentLeft = self.$scrollable.scrollLeft();
 
           if (currentTop !== previousTop || currentLeft !== previousLeft) {
-            self.translate(currentLeft, currentTop);
+            self._translate(currentLeft, currentTop);
             previousTop = currentTop;
             previousLeft = currentLeft;
           }
@@ -65,6 +110,12 @@
       rAF();
     },
 
+    /**
+     * Plugin cleanup
+     *
+     * @method destroy
+     * @public
+     **/
     destroy: function() {
       if (!Sticky.useSticky) {
 
@@ -76,11 +127,20 @@
         });
       }
     }
-
   };
+
+
+  /* STICKY PLUGIN DEFINITION
+   * ========================== */
 
   var old = $.fn.sticky;
 
+  /**
+   * Jquery plugin - $.fn.sticky
+   *
+   * @params {String} method
+   * @class
+   **/
   $.fn.sticky = function(option) {
     return this.each(function() {
       var $this = $(this),
@@ -101,9 +161,13 @@
 
   $.fn.sticky.defaults = {};
 
+
+  /* STICKY NO CONFLICT
+   * ==================== */
+
   $.fn.sticky.noConflict = function() {
     $.fn.sticky = old;
     return this;
   };
 
-}(this.jQuery));
+}(jQuery));
