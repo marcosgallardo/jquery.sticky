@@ -50,18 +50,24 @@
      * @private
      **/
     _init: function($el) {
+      var top,
+        left;
+
       if (!Sticky.useSticky) {
         this.$el = $el;
 
         // Force position - iOS 6 bug
         $el.css('position', 'static');
-        this.initialLeft = parseInt($el.css('left'), 10) || 0;
-        this.initialTop = parseInt($el.css('top'), 10) || 0;
+
+        top = $el.css('top');
+        left = $el.css('left');
+        this.initialTop = top === 'auto' ? false : parseInt(top);
+        this.initialLeft = left === 'auto' ? false : parseInt(left);
 
         // cache scrollable
         this.$scrollable = this.$el.closest(this.$el.data('target'));
 
-        this._translate();
+        this._translate(0, 0);
         this._listenScroll();
       }
     },
@@ -75,8 +81,11 @@
      * @private
      **/
     _translate: function(x, y) {
+      var top = (this.initialTop === false)? 0 : this.initialTop + y,
+        left = (this.initialLeft === false)? 0 : this.initialLeft + x;
+
       this.$el.css({
-        transform: 'translate(' + (this.initialLeft + (x || 0)) + 'px, ' + (this.initialTop + (y || 0)) + 'px)'
+        transform: 'translate(' + left + 'px, ' + top + 'px)'
       });
 
       return this;
@@ -99,7 +108,7 @@
           currentTop = self.$scrollable.scrollTop();
           currentLeft = self.$scrollable.scrollLeft();
 
-          if (currentTop !== previousTop || currentLeft !== previousLeft) {
+          if ((self.initialTop !== false && currentTop !== previousTop) || (self.initialLeft !== false && currentLeft !== previousLeft)) {
             self._translate(currentLeft, currentTop);
             previousTop = currentTop;
             previousLeft = currentLeft;
